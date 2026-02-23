@@ -1,7 +1,7 @@
 """
 mlkit.py — Framework-Agnostic ML Toolkit
 
-40+ one-liner utility functions for machine learning workflows.
+46 one-liner utility functions for machine learning workflows.
 Works with any framework: scikit-learn, XGBoost, PyTorch, TensorFlow, etc.
 
 Modules:
@@ -10,7 +10,7 @@ Modules:
     data     — Data preprocessing & transformation
     vision   — Image loading, resizing, augmentation
     train    — Model training, cross-validation, persistence
-    results  — Results logging & summarisation
+    results  — Results logging & summarization
     compare  — Model comparison & feature ranking
 """
 
@@ -399,8 +399,8 @@ def augment_image(img, flip_horizontal=True, flip_vertical=False,
 def to_tensor(img):
     """Convert a HWC uint8 image to a CHW float32 array normalised to [0, 1].
 
-    This is framework-agnostic — returns a plain NumPy array that can be fed
-    into PyTorch (``torch.from_numpy``) or TensorFlow.
+    This is framework-agnostic — returns a plain NumPy array normalized to
+    [0, 1] that can be fed into PyTorch (``torch.from_numpy``) or TensorFlow.
     """
     arr = _to_numpy(img).astype(np.float32) / 255.0
     if arr.ndim == 3:
@@ -473,7 +473,7 @@ def load_model(path):
     return joblib.load(path)
 
 # ============================================================================
-# RESULTS MODULE — Results Logging & Summarisation
+# RESULTS MODULE — Results Logging & Summarization
 # ============================================================================
 
 def log_results(results, path, fmt="json"):
